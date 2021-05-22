@@ -1,3 +1,4 @@
+#mapreduce way
 var mapper = function() {
     emit (this.location.state , 1)
 };
@@ -15,6 +16,8 @@ db.contacts.mapReduce(
 
 db.result.find().sort({value: -1})
 
+
+#Aggregation alternative
 db.contacts.aggregate([ 
 { $match: { gender: "male" } },
 { $group: {  _id: { state: "$location.state"},  totalmale: { $sum: 1 }  }  },
